@@ -1,4 +1,4 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 
 <html>
 
@@ -8,71 +8,9 @@
 
 <body>
 	<!-- the entire body must be written by student -->
-<!--     <script type="text/javascript" src="./script.js">
+    <script type="text/javascript" src="./script.js">
 </script>
 
 </body>
 
-</html> --> 
-
-<!DOCTYPE html>
-<html>
-<head>
-	<title>GitHub Issues Page Viewer</title>
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<script>
-		$(document).ready(function() {
-			var pageNumber = 1;
-
-			// function to display issues on the page
-			function displayIssues(issues) {
-				// clear any previously displayed issues
-				$('#issuesList').empty();
-				// loop through the issues and create list items
-				for (var i = 0; i < issues.length; i++) {
-					var issue = issues[i];
-					$('#issuesList').append('<li>' + issue.title + '</li>');
-				}
-			}
-
-			// function to load issues from API
-			function loadIssues() {
-				$.ajax({
-					url: 'https://api.github.com/repositories/1296269/issues?page=' + pageNumber + '&per_page=5',
-					dataType: 'json',
-					success: function(data) {
-						displayIssues(data);
-						$('#pageNumber').text('Page number ' + pageNumber);
-					},
-					error: function() {
-						alert('Error loading issues');
-					}
-				});
-			}
-
-			// load first page of issues on page load
-			loadIssues();
-
-			// load next page of issues on button click
-			$('#load_next').click(function() {
-				pageNumber++;
-				loadIssues();
-			});
-
-			// load previous page of issues on button click
-			$('#load_prev').click(function() {
-				if (pageNumber > 1) {
-					pageNumber--;
-					loadIssues();
-				}
-			});
-		});
-	</script>
-</head>
-<body>
-	<h1 id="pageNumber">Page number 1</h1>
-	<ol id="issuesList"></ol>
-	<button id="load_prev">Previous</button>
-	<button id="load_next">Next</button>
-</body>
 </html>
